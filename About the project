@@ -1,3 +1,77 @@
 Multi Tier Web Application Stack
 Setup on Laptop/Deskop
 Baseline for Upcoming Projects
+Helps you setup any project locally
+
+Scenario
+working in a project
+varieties of services that powers your project runtime.
+(RunBook / Setup document)
+
+Problem
+Not comfortable in making changes in real servers.
+local setup is complex
+time consuming
+not repeatable
+
+Solution
+Local setup will be Automated, Repeatable, Code [IAAC]
+R&D in your own machine.
+
+Tools
+Hypervisor - Oracle VM Virtualbox
+Automation _ Vagrant
+CLI - Git Bash
+IDE - Sublime text
+
+Objective
+VM Automation locally
+Real world project setup locally [for R&D]
+
+Vprofile Project
+Architecture of project services
+NGINX
+TOMCAT
+RABBITMQ
+MEMCACHED
+MYSQL
+
+Architecture of Automated Setup
+VAGRANT
+VIRTUALBOX
+GITBASH
+
+Architectural design
+After setting up our stack, user can access our services from browser
+entering ip address or an endpoint,
+The user will be redirected to Load balancer.
+we will setup NGINX service which will act like a load balancer
+NGINX service is then going to forward the request to application server
+Apache Tomcat will be our application server where our java application
+will be running we can even have a shared storage by using NFS
+Application server will then forward the request to RABBITMQ which will be
+our message broker and that will send the request to MEMCACHED for database
+caching.
+MEMCACHED is going to cache the SQL queries which was executed for the MYSQL
+server.
+
+Design for Automation stack
+we will be using VAGRANT to automatically setup our virtual machine
+Vagrant is going to communicate with Oracle VirtualBox which is the
+hypervisor and create automatically virtual machines on that then we
+will be using bash scripts or command to setup services.
+
+Flow of execution
+Setup tools mentioned in prerequisite video
+clone source code
+cd into vagrant dir
+bring up VM's
+validate
+Setup All the services
+a. Mysql
+b. Memcached
+c. Rabbit MQ
+d. Tomcat
+e. Nginx
+f. App Build & Deploy
+Verify from browser
