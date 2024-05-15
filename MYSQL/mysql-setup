@@ -1,0 +1,32 @@
+switch to root user
+sudo -i
+run update
+yum update -y
+setup a variable for database
+DATABASE_PASS='admin123'
+echo $DATABASE_PASS
+admin123
+this is temporary, if you log out and login it will be lost
+to make permanent put into
+vi /etc/profile
+after updating
+source /etc/profile
+so that variable becomes permanent
+setup a repository
+yum install epel-release -y
+install packages
+yum install git mariadb-server -y
+start service
+systemctl start mariadb
+to come up automatically when rebooted
+systemctl enable mariadb
+check status
+systemctl status mariadb
+Active!
+mysql_secure_installation
+set the same password as you have set in the variable
+mysql root password is setup
+test password
+mysql -u root -p
+
+
